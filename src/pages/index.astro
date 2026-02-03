@@ -1,28 +1,25 @@
 ---
-const name = "Surya";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SocialLinks from "../components/SocialLinks.astro";
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <title>{name} | Cybersecurity Portfolio</title>
-  </head>
+<BaseLayout title="Sree Surya | Cyber Security Engineer">
+  <img src="/profile.jpg" alt="Profile" width="140" style="border-radius:50%;" />
 
-  <body style="background:#0f172a; color:#e5e7eb; font-family:sans-serif;">
-    <main style="max-width:900px; margin:auto; padding:3rem;">
-      <h1>{name}</h1>
-      <h2>Cybersecurity & Cloud Security Engineer</h2>
-      <p>
-        I design secure AWS architectures with Zero Trust, JIT access,
-        and automated detection & response.
-      </p>
+  <h1>Sree Surya Naga Sesank M</h1>
+  <h2>Cyber Security Engineer | AWS & Cloud Security</h2>
 
-      <ul>
-        <li>AWS Security</li>
-        <li>Zero Trust Architecture</li>
-        <li>IAM & SCPs</li>
-        <li>SOAR & Automation</li>
-      </ul>
-    </main>
-  </body>
-</html>
+  <p>
+    Cyber Security Engineer skilled in AWS, Detection Engineering,
+    LLM-Driven SOC, GRC, and Healthcare Security Management.
+  </p>
+
+  <ul>
+    <li>AWS & Cloud Security</li>
+    <li>Zero Trust & IAM / SCPs</li>
+    <li>Detection Engineering & SOAR</li>
+    <li>LLM-Driven SOC & Security Automation</li>
+  </ul>
+
+  <SocialLinks />
+</BaseLayout>
