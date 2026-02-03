@@ -1,12 +1,11 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { getHashnodePosts } from "../lib/hashnode";
-import { getMediumPosts } from "../lib/medium";
+import { getHashnodePosts } from "../lib/hashnode.ts";
+import { getMediumPosts } from "../lib/medium.ts";
 
-const hashnodePosts = await getHashnodePosts();
-const mediumPosts = await getMediumPosts();
+const hashnodePosts = (await getHashnodePosts()) ?? [];
+const mediumPosts = (await getMediumPosts()) ?? [];
 ---
-
 <BaseLayout title="Blogs | Sree Surya">
   <h1>Blogs & Articles</h1>
 
@@ -15,61 +14,65 @@ const mediumPosts = await getMediumPosts();
     and AWS security architecture.
   </p>
 
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-top:3rem;">
+  <div class="grid">
 
-    <!-- Hashnode Column -->
     <section>
       <h2>Hashnode · Friday Security</h2>
-
       <ul>
-        {
-          hashnodePosts.length === 0
-            ? <li>No Hashnode posts found.</li>
-            : hashnodePosts.map((post) => {
-                return (
-                  <li style="margin-bottom:1.2rem;">
-                    <a href={post.url} target="_blank" rel="noopener noreferrer">
-                      {post.title}
-                    </a>
-                    <div style="color:#94a3b8;font-size:0.85rem;">
-                      {new Date(post.date).toDateString()}
-                    </div>
-                  </li>
-                );
-              })
-        }
+        {hashnodePosts.length === 0 && <li>No Hashnode posts found.</li>}
+
+        {hashnodePosts.map((post) => (
+          <li>
+            <a href={post.url} target="_blank" rel="noopener noreferrer">
+              {post.title}
+            </a>
+            <div class="date">
+              {new Date(post.date).toDateString()}
+            </div>
+          </li>
+        ))}
       </ul>
     </section>
 
-    <!-- Medium Column -->
     <section>
       <h2>Medium</h2>
-
       <ul>
-        {
-          mediumPosts.length === 0
-            ? <li>No Medium posts found.</li>
-            : mediumPosts.map((post) => {
-                return (
-                  <li style="margin-bottom:1.2rem;">
-                    <a href={post.url} target="_blank" rel="noopener noreferrer">
-                      {post.title}
-                    </a>
-                    <div style="color:#94a3b8;font-size:0.85rem;">
-                      {new Date(post.date).toDateString()}
-                    </div>
-                  </li>
-                );
-              })
-        }
+        {mediumPosts.length === 0 && <li>No Medium posts found.</li>}
+
+        {mediumPosts.map((post) => (
+          <li>
+            <a href={post.url} target="_blank" rel="noopener noreferrer">
+              {post.title}
+            </a>
+            <div class="date">
+              {new Date(post.date).toDateString()}
+            </div>
+          </li>
+        ))}
       </ul>
     </section>
 
   </div>
 
   <style>
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      margin-top: 3rem;
+    }
+
+    li {
+      margin-bottom: 1.2rem;
+    }
+
+    .date {
+      color: #94a3b8;
+      font-size: 0.85rem;
+    }
+
     @media (max-width: 768px) {
-      div[style*="grid-template-columns"] {
+      .grid {
         grid-template-columns: 1fr;
       }
     }
