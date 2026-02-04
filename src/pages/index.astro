@@ -1,25 +1,486 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import SocialLinks from "../components/SocialLinks.astro";
+import { getHashnodePosts } from "../lib/hashnode";
+import { getMediumPosts } from "../lib/medium";
+
+const hashnodePosts = await getHashnodePosts();
+const mediumPosts = await getMediumPosts();
+
+const blogs = [...hashnodePosts, ...mediumPosts]
+  .sort(
+    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+  )
+  .slice(0, 3);
 ---
 
-<BaseLayout title="Sree Surya | Cyber Security Engineer">
-  <img src="/Profile_photo.png" alt="Profile" width="140" style="border-radius:50%;" />
 
-  <h1>Sree Surya Naga Sesank M</h1>
-  <h2>Cyber Security Engineer | AWS & Cloud Security</h2>
+<BaseLayout>
+  <!-- ================= HERO ================= -->
+<section class="hero">
+  <div class="hero-text">
+    <div class="hero-tag">Available · Immediate Joiner</div>
 
-  <p>
-    Cyber Security Engineer skilled in AWS, Detection Engineering,
-    LLM-Driven SOC, GRC, and Healthcare Security Management.
-  </p>
+    <h1>
+      Designing security<br />
+      for <span class="grad">real cloud systems</span>
+    </h1>
 
-  <ul>
-    <li>AWS & Cloud Security</li>
-    <li>Zero Trust & IAM / SCPs</li>
-    <li>Detection Engineering & SOAR</li>
-    <li>LLM-Driven SOC & Security Automation</li>
-  </ul>
+    <p class="hero-about">
+      I’m Sree Surya Naga M, a senior cybersecurity engineer with 8+ years
+      across cloud, network, and security operations, focused on practical,
+      automation-first security that works in production.
+    </p>
 
-  <SocialLinks />
+    <p class="hero-sub">
+     I design, secure, and automate cloud platforms — across identity,
+     network, detection, and compliance — with a focus on systems that
+     scale, pass audits, and survive real incidents.
+    </p>
+
+    <div class="hero-cta">
+      <a href="#contact" class="btn btn-primary">Get In Touch →</a>
+      <a href="#projects" class="btn btn-outline">View My Work</a>
+    </div>
+  </div>
+
+  <div class="hero-photo-wrap">
+    <div class="photo-glow"></div>
+    <div class="dot-accent top-right"></div>
+    <div class="dot-accent bot-left"></div>
+
+    <div class="hero-photo-frame">
+      <img
+        src="/profile-photo.png"
+        alt="Sree Surya Naga M"
+      />
+    </div>
+    <div class="hero-resume">
+      <a href="/resume.pdf" download class="btn btn-primary">
+         Download Resume
+       </a>
+    </div>
+
+  </div>
+</section>
+
+  <!-- ================= STATS ================= -->
+  <section class="section">
+    <div class="stats-row">
+      <div class="stat-card glass">
+        <div class="stat-num">8+</div>
+        <div class="stat-label">Years Experience</div>
+      </div>
+
+      <div class="stat-card glass">
+        <div class="stat-num">50+</div>
+        <div class="stat-label">Vulnerabilities Fixed</div>
+      </div>
+
+      <div class="stat-card glass">
+        <div class="stat-num">40%</div>
+        <div class="stat-label">Risk Reduction</div>
+      </div>
+
+      <div class="stat-card glass">
+        <div class="stat-num">90%</div>
+        <div class="stat-label">Auto Remediation</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= EXPERTISE ================= -->
+  <section id="skills" class="section">
+  <div class="container">
+    <div class="section-head">
+      <span class="kicker">EXPERTISE</span>
+      <h2>What I Bring to the Table</h2>
+      <p>
+        A deep skill set across cloud security, network defense, and security
+        operations — built over years in the field.
+      </p>
+    </div>
+
+    <div class="expertise-grid">
+      <div class="expertise-card glass">
+        <div class="icon-wrap">☁️</div>
+        <h3>AWS Cloud Security</h3>
+        <p>
+          IAM, EC2, VPC, WAF, GuardDuty, CloudTrail, Security Hub —
+          full-stack AWS protection.
+        </p>
+      </div>
+
+      <div class="expertise-card glass">
+        <div class="icon-wrap">🌐</div>
+        <h3>Network Defense</h3>
+        <p>
+          Palo Alto (PCNSE), Cisco (CCNP), Juniper,
+          IDS/IPS, VPN, Zero Trust architecture design.
+        </p>
+      </div>
+
+      <div class="expertise-card glass">
+        <div class="icon-wrap">⚙️</div>
+        <h3>DevSecOps</h3>
+        <p>
+          Infrastructure as Code with Terraform & Ansible,
+          CI/CD pipeline security, Python & Bash automation.
+        </p>
+      </div>
+
+      <div class="expertise-card glass">
+        <div class="icon-wrap">🔍</div>
+        <h3>Pen Testing & Vuln Mgmt</h3>
+        <p>
+          End-to-end penetration testing, OWASP Top 10,
+          RCE, SQL injection identification and remediation.
+        </p>
+      </div>
+
+      <div class="expertise-card glass">
+        <div class="icon-wrap">🤖</div>
+        <h3>GenAI Security</h3>
+        <p>
+          Securing AI/ML pipelines using MITRE ATLAS frameworks —
+          an emerging and critical specialization.
+        </p>
+      </div>
+
+      <div class="expertise-card glass">
+        <div class="icon-wrap">📜</div>
+        <h3>Compliance & GRC</h3>
+        <p>
+          ISO 27001, HIPAA, HITRUST, CIS Benchmarks —
+          end-to-end governance, risk, and compliance.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <!-- ================= EXPERIENCE ================= -->
+ <section id="experience" class="section">
+  <div class="container">
+    <div class="section-head">
+      <span class="kicker">CAREER</span>
+      <h2>Work Experience</h2>
+      <p>
+        A steady progression from hands-on network engineering to leading
+        cloud-native security operations.
+      </p>
+    </div>
+
+    <div class="experience-wrap">
+      <div class="experience-line"></div>
+
+      <!-- ITEM 1 -->
+      <div class="experience-item">
+        <div class="experience-date">
+          <span>Feb 2025</span>
+          <span>–</span>
+          <span>Sep 2025</span>
+        </div>
+
+        <div class="experience-dot"></div>
+
+        <div class="experience-content">
+          <h3>Senior Cybersecurity Engineer (AWS Cloud)</h3>
+          <div class="experience-company">CitiusTech · Hyderabad</div>
+          <p>
+            Architected Zero Trust IAM policies for AWS healthcare platforms
+            ensuring 100% HIPAA/HITRUST compliance. Engineered centralized
+            threat detection reducing MTTD by 35%. Automated 90% of
+            infrastructure remediation via Terraform & Ansible. Led
+            escalation for complex incidents and mentored junior engineers.
+          </p>
+        </div>
+      </div>
+
+      <!-- ITEM 2 -->
+      <div class="experience-item">
+        <div class="experience-date">
+          <span>Aug 2021</span>
+          <span>–</span>
+          <span>Feb 2025</span>
+        </div>
+
+        <div class="experience-dot"></div>
+
+        <div class="experience-content">
+          <h3>Security Researcher – Vulnerability Management</h3>
+          <div class="experience-company">Loginsoft · Hyderabad</div>
+          <p>
+            Conducted end-to-end penetration testing on web applications
+            and APIs, fixing 50+ critical vulnerabilities. Built CIS-based
+            hardening baselines reducing attack surface by 25%. Audited
+            Cisco & Juniper configurations and delivered risk-prioritized
+            reports.
+          </p>
+        </div>
+      </div>
+
+      <!-- ITEM 3 -->
+      <div class="experience-item">
+        <div class="experience-date">
+          <span>May 2020</span>
+          <span>–</span>
+          <span>Sep 2021</span>
+        </div>
+
+        <div class="experience-dot"></div>
+
+        <div class="experience-content">
+          <h3>Security Analyst</h3>
+          <div class="experience-company">Mitigater · Bhubaneswar</div>
+          <p>
+            Monitored enterprise security alerts across firewalls and
+            IDS/IPS. Performed access reviews via Active Directory
+            enforcing least privilege.
+          </p>
+        </div>
+      </div>
+
+      <!-- ITEM 4 -->
+      <div class="experience-item">
+        <div class="experience-date">
+          <span>Jun 2018</span>
+          <span>–</span>
+          <span>Jul 2019</span>
+        </div>
+
+        <div class="experience-dot"></div>
+
+        <div class="experience-content">
+          <h3>Security Engineer</h3>
+          <div class="experience-company">
+            CRM Enterprise Pvt. Ltd. · Visakhapatnam
+          </div>
+          <p>
+            Implemented perimeter security controls using enterprise
+            firewalls. Executed baseline hardening and remediated audit
+            findings.
+          </p>
+        </div>
+      </div>
+
+      <!-- ITEM 5 -->
+      <div class="experience-item">
+        <div class="experience-date">
+          <span>Apr 2017</span>
+          <span>–</span>
+          <span>May 2018</span>
+        </div>
+
+        <div class="experience-dot"></div>
+
+        <div class="experience-content">
+          <h3>Desktop & Network Engineer</h3>
+          <div class="experience-company">
+            Flash Forge Pvt. Ltd. · Visakhapatnam
+          </div>
+          <p>
+            Managed 100+ endpoints with secure config &amp; patching. Maintained 99.9% uptime across LAN/WAN/VPN
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <!-- ================= PROJECTS ================= -->
+  <section id="projects" class="section">
+  <div class="container">
+    <div class="section-head">
+      <span class="kicker">PROJECTS</span>
+      <h2>Technical Projects</h2>
+      <p>
+        Real-world builds that put theory into practice at scale.
+      </p>
+    </div>
+
+    <div class="projects-grid">
+      <!-- Project 01 -->
+      <div class="project-card glass">
+        <div class="project-index">01</div>
+        <h3>AWS Cloud Security Automation</h3>
+        <p>
+          Automated VPC & Security Group provisioning using Terraform
+          and Python with least-privilege IAM baked in from day one.
+        </p>
+      </div>
+
+      <!-- Project 02 -->
+      <div class="project-card glass">
+        <div class="project-index">02</div>
+        <h3>Network Lab Automation</h3>
+        <p>
+          Used GNS3 and Ansible to fully automate network lab
+          deployments — slashing manual setup time by 70%.
+        </p>
+      </div>
+
+      <!-- Project 03 -->
+      <div class="project-card glass">
+        <div class="project-index">03</div>
+        <h3>Device Vulnerability Assessment</h3>
+        <p>
+          Deep-packet analysis of firewall rules and routing
+          policies to eliminate all exposed services across
+          the estate.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+  <!-- ================= CERTIFICATIONS ================= -->
+  <section id="certifications" class="section">
+  <div class="container">
+    <div class="section-head">
+      <span class="kicker">CREDENTIALS</span>
+      <h2>Certifications</h2>
+      <p>
+        Industry-recognized badges that back up the expertise.
+      </p>
+    </div>
+
+    <div class="cert-grid">
+      <!-- AWS -->
+      <div class="cert-card glass">
+        <span class="cert-badge aws">AWS</span>
+        <div class="cert-content">
+          <h3>Solutions Architect</h3>
+          <p>AWS Certified</p>
+        </div>
+      </div>
+
+      <!-- Palo Alto -->
+      <div class="cert-card glass">
+        <span class="cert-badge palo">PALO ALTO</span>
+        <div class="cert-content">
+          <h3>PCNSE</h3>
+          <p>Network Security Engineer</p>
+        </div>
+      </div>
+
+      <!-- EC-Council -->
+      <div class="cert-card glass">
+        <span class="cert-badge ecc">EC-COUNCIL</span>
+        <div class="cert-content">
+          <h3>CEH</h3>
+          <p>Certified Ethical Hacker</p>
+        </div>
+      </div>
+
+      <!-- Cisco -->
+      <div class="cert-card glass">
+        <span class="cert-badge cisco">CISCO</span>
+        <div class="cert-content">
+          <h3>CCNA & CCNP</h3>
+          <p>Networking Certifications</p>
+        </div>
+      </div>
+
+      <!-- Microsoft -->
+      <div class="cert-card glass">
+        <span class="cert-badge ms">MICROSOFT</span>
+        <div class="cert-content">
+          <h3>MCSE</h3>
+          <p>Systems Engineer</p>
+        </div>
+      </div>
+
+      <!-- GenAI -->
+      <div class="cert-card glass">
+        <span class="cert-badge genai">UDEMY</span>
+        <div class="cert-content">
+          <h3>GenAI Cybersecurity</h3>
+          <p>OWASP Top 10 & MITRE ATLAS</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== BLOGS ============== -->
+<section class="section" id="blogs">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-eyebrow">WRITING</span>
+      <h2>Latest Blog Posts</h2>
+      <p class="section-sub">
+        Recent writing on cloud security, Zero Trust, detection engineering, and AWS.
+      </p>
+    </div>
+
+    <div class="blog-grid">
+      {blogs.slice(0, 3).map((post) => (
+        <article class="blog-card glass">
+          <span class="blog-source">HASHNODE</span>
+
+          <h3>{post.title}</h3>
+          <p>{post.description}</p>
+
+          <div class="blog-meta">
+            <span>{new Date(post.date).toLocaleDateString()}</span>
+            <a href={post.url} target="_blank" rel="noopener">
+              Read →
+            </a>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+ <!-- ============== CONTACT ============== -->
+<section id="contact" class="section">
+  <div class="container contact-container">
+    <div class="section-head contact-head">
+    <span class="kicker">CONTACT</span>
+    <h2>Let’s Connect</h2>
+   <p>
+    Open to new roles, consulting, and collaboration.
+    Let’s build something secure together.
+    </p>
+  </div>
+
+    <div class="contact-grid">
+      <div class="contact-card glass">
+        <div class="contact-icon">✉️</div>
+        <div>
+          <span class="contact-label">Email</span>
+          <span class="contact-value">nagasesank@gmail.com</span>
+        </div>
+      </div>
+
+      <div class="contact-card glass">
+        <div class="contact-icon">📞</div>
+        <div>
+          <span class="contact-label">Phone</span>
+          <span class="contact-value">+91 96181 98811</span>
+        </div>
+      </div>
+
+      <div class="contact-card glass">
+        <div class="contact-icon">🔗</div>
+        <div>
+          <span class="contact-label">LinkedIn</span>
+          <span class="contact-value">linkedin.com/in/nagasesank</span>
+        </div>
+      </div>
+
+      <div class="contact-card glass">
+        <div class="contact-icon">💻</div>
+        <div>
+          <span class="contact-label">GitHub</span>
+          <span class="contact-value">github.com/nagasesank</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
 </BaseLayout>

@@ -3,13 +3,61 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
 <BaseLayout title="Projects | Sree Surya">
-  <h1>Projects</h1>
+  <h1>Security Projects</h1>
 
-  <ul>
-    <li>Multi-Account Zero Trust Architecture (AWS Organizations & SCPs)</li>
-    <li>Just-In-Time Access for EC2 (IAM + Lambda automation)</li>
-    <li>Automated Detection & Response (SOAR)</li>
-    <li>Cloud Threat Detection using SIEM pipelines</li>
-    <li>Healthcare Data Security & Compliance Controls</li>
-  </ul>
+  <div class="projects">
+
+    <div class="project">
+      <h2>Zero Trust EC2 Access (SSH-less)</h2>
+      <p>
+        Designed a Zero Trust access model eliminating SSH by using
+        IAM, AWS SSM Session Manager, and Just-In-Time permissions.
+      </p>
+
+      <ul>
+        <li>No inbound ports or bastion hosts</li>
+        <li>Identity-based access instead of network trust</li>
+        <li>Full auditability via CloudTrail</li>
+      </ul>
+
+      <div class="links">
+        <a href="https://github.com/nagasesank" target="_blank">GitHub</a>
+        <a href="/blogs">Design Write-up</a>
+      </div>
+    </div>
+
+    <!-- Duplicate for more projects -->
+
+  </div>
+
+  <style>
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .project {
+      border: 1px solid #1e293b;
+      padding: 1.5rem;
+      background: #020617;
+    }
+
+    .project ul {
+      margin-top: 0.5rem;
+      padding-left: 1.2rem;
+    }
+
+    .links {
+      margin-top: 1rem;
+      display: flex;
+      gap: 1rem;
+    }
+
+    .links a {
+      color: #60a5fa;
+      text-decoration: none;
+    }
+  </style>
 </BaseLayout>

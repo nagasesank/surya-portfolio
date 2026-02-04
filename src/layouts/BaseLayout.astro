@@ -1,22 +1,42 @@
 ---
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
-const { title } = Astro.props;
----
 
+const {
+  title = "Sree Surya Naga Sesank – Cybersecurity Engineer",
+  description = "Senior Cybersecurity & AWS Cloud Security Engineer with 8+ years in cloud, network, and DevSecOps security."
+} = Astro.props;
+---
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content={description} />
   <title>{title}</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Global Theme CSS -->
+  <link rel="stylesheet" href="/styles/theme.css" />
 </head>
 
-<body style="margin:0;background:#020617;color:#e5e7eb;font-family:Inter,system-ui;">
-  <Header />
-  <main style="max-width:1100px;margin:auto;padding:3rem 1.5rem;">
-    <slot />
-  </main>
+<body>
+  <!-- NAV (CSS depends on nav selector) -->
+  <nav>
+    <Header />
+  </nav>
+
+  <!-- PAGE CONTENT (NO <main> yet) -->
+  <slot />
+
+  <!-- FOOTER -->
   <Footer />
 </body>
 </html>

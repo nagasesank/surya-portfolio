@@ -1,80 +1,119 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { getHashnodePosts } from "../lib/hashnode.ts";
-import { getMediumPosts } from "../lib/medium.ts";
-
-const hashnodePosts = (await getHashnodePosts()) ?? [];
-const mediumPosts = (await getMediumPosts()) ?? [];
 ---
-<BaseLayout title="Blogs | Sree Surya">
-  <h1>Blogs & Articles</h1>
 
-  <p>
-    I write about cloud security, detection engineering, SOC automation,
-    and AWS security architecture.
-  </p>
+<BaseLayout>
+  <section class="section">
+    <div class="container">
+      <!-- Page Head -->
+      <div class="section-head">
+        <h1>Blogs & Articles</h1>
+        <p>
+          I write about cloud security, detection engineering,
+          SOC automation, and AWS security architecture.
+        </p>
+      </div>
 
-  <div class="grid">
+      <!-- Two Column Layout -->
+      <div class="blogs-split">
+        <!-- LEFT: HASHNODE -->
+        <div class="blogs-column">
+          <h3 class="blogs-source">Hashnode</h3>
 
-    <section>
-      <h2>Hashnode · Friday Security</h2>
-      <ul>
-        {hashnodePosts.length === 0 && <li>No Hashnode posts found.</li>}
+          <ul class="blogs-list">
+            <li>
+              <a href="#" class="blog-link">
+                🔐 Project 5: Zero-Trust EC2 Access in AWS Using IAM, SSM, CloudTrail, and GuardDuty
+              </a>
+              <span class="blog-date">Sun Feb 01 2026</span>
+            </li>
 
-        {hashnodePosts.map((post) => (
-          <li>
-            <a href={post.url} target="_blank" rel="noopener noreferrer">
-              {post.title}
-            </a>
-            <div class="date">
-              {new Date(post.date).toDateString()}
-            </div>
-          </li>
-        ))}
-      </ul>
-    </section>
+            <li>
+              <a href="#" class="blog-link">
+                🔐 Project 4: Eliminating SSH with AWS Systems Manager — IAM-Controlled, Auditable EC2 Access
+              </a>
+              <span class="blog-date">Sat Jan 24 2026</span>
+            </li>
 
-    <section>
-      <h2>Medium</h2>
-      <ul>
-        {mediumPosts.length === 0 && <li>No Medium posts found.</li>}
+            <li>
+              <a href="#" class="blog-link">
+                🔐 Project 3: Implementing and Testing Security Controls in a Real Cloud Environment
+              </a>
+              <span class="blog-date">Sun Jan 18 2026</span>
+            </li>
 
-        {mediumPosts.map((post) => (
-          <li>
-            <a href={post.url} target="_blank" rel="noopener noreferrer">
-              {post.title}
-            </a>
-            <div class="date">
-              {new Date(post.date).toDateString()}
-            </div>
-          </li>
-        ))}
-      </ul>
-    </section>
+            <li>
+              <a href="#" class="blog-link">
+                🔐 Project 2: Security Design Trade-offs in AWS (Where Convenience Starts to Win)
+              </a>
+              <span class="blog-date">Wed Jan 14 2026</span>
+            </li>
 
-  </div>
+            <li>
+              <a href="#" class="blog-link">
+                🔐 Project 1: Building a Secure Cloud Baseline in AWS (Before Things Break)
+              </a>
+              <span class="blog-date">Sat Jan 10 2026</span>
+            </li>
+          </ul>
+        </div>
 
-  <style>
-    .grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3rem;
-      margin-top: 3rem;
-    }
+        <!-- RIGHT: MEDIUM -->
+        <div class="blogs-column">
+          <h3 class="blogs-source">Medium</h3>
 
-    li {
-      margin-bottom: 1.2rem;
-    }
+          <ul class="blogs-list">
+            <li>
+              <a href="#" class="blog-link">
+                Why SSH No Longer Fits Zero-Trust EC2 Access in AWS
+              </a>
+              <span class="blog-date">Sun Feb 01 2026</span>
+            </li>
 
-    .date {
-      color: #94a3b8;
-      font-size: 0.85rem;
-    }
+            <li>
+              <a href="#" class="blog-link">
+                Eliminating SSH in AWS: Why Identity-Based Access Beats Network Trust
+              </a>
+              <span class="blog-date">Sun Jan 25 2026</span>
+            </li>
 
-    @media (max-width: 768px) {
-      .grid {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
+            <li>
+              <a href="#" class="blog-link">
+                Designing IAM Least Privilege for EC2: From Zero Access to Auditable Enforcement
+              </a>
+              <span class="blog-date">Fri Jan 16 2026</span>
+            </li>
+
+            <li>
+              <a href="#" class="blog-link">
+                Securing SSH Access to AWS EC2: From Perimeter Controls to Detection
+              </a>
+              <span class="blog-date">Sat Jan 10 2026</span>
+            </li>
+
+            <li>
+              <a href="#" class="blog-link">
+                Years in Security Engineering — and I’m Still Learning Every Day
+              </a>
+              <span class="blog-date">Mon Jan 05 2026</span>
+            </li>
+
+            <li>
+              <a href="#" class="blog-link">
+                Baseline Linux Server Hardening & Exposure Validation
+              </a>
+              <span class="blog-date">Mon Jan 05 2026</span>
+            </li>
+
+            <li>
+              <a href="#" class="blog-link">
+                Filename Leads to Path Traversal
+              </a>
+              <span class="blog-date">Wed May 26 2021</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
 </BaseLayout>
